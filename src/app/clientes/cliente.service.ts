@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {CLIENTES } from './clientes.json';
+//import {CLIENTES } from './clientes.json';
 import { Cliente } from './cliente';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs';                //EL OF ES PARA CONVERTIR UN OBJ EN UN OBSERVABLE.
@@ -12,6 +12,8 @@ import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { formatDate } from '@angular/common';
 import { tap } from 'rxjs/operators';
+import { HttpRequest } from '@angular/common/http';
+import { HttpEvent } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -151,6 +153,44 @@ export class ClienteService {
       return throwError(e);
     }));
   }
+
+  /*
+  //SIN BARRA DE CARGA DE IMAGEN
+  subirFoto(archivo : File, id) : Observable<Cliente> {
+    let formData = new FormData();
+    formData.append("archivo",archivo);
+    formData.append("id",id);
+
+    const req = new HttpRequest('POST', '/upload/file', file, {
+      reportProgress: true
+    });
+
+    return this.http.post(`${this.urlEndPoint}/upload`,formData).pipe(
+      map((response : any) => response.cliente as Cliente),
+      catchError(
+        e => {
+         console.error(e.error.mensaje);
+         swal.fire(e.error.mensaje, e.error.error, 'error');
+         return throwError(e);
+       }
+      )
+    );
+  }
+  */
+
+  //CLASE 105 : CON BARRA DE CARGA DE IMAGEN
+  subirFoto(archivo : File, id) : Observable<HttpEvent<{}>> {
+    let formData = new FormData();
+    formData.append("archivo",archivo);
+    formData.append("id",id);
+
+    const req = new HttpRequest('POST', `${this.urlEndPoint}/upload`,formData, {
+      reportProgress: true
+    });
+
+    return this.http.request(req);
+  }
+
 
   private http : HttpClient;
   private urlEndPoint : string = 'http://localhost:8080/api/clientes';

@@ -1,3 +1,4 @@
+/*
 import { Cliente } from './cliente';
 
 export const CLIENTES : Cliente[] = [
@@ -10,3 +11,4 @@ export const CLIENTES : Cliente[] = [
   {id:7, nombre:'ooooo', apellido:'ppppp', email:'ooooo@pppp.com', createAt:'2022-05-09'},
   {id:8, nombre:'fffff', apellido:'jjjjj', email:'fffff@jjjj.com', createAt:'2016-08-15'},
 ];
+*/
