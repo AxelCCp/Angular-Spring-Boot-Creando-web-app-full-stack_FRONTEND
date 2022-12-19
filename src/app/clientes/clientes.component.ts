@@ -95,5 +95,6 @@ export class ClientesComponent implements OnInit {
   private clienteService : ClienteService;
   private activatedRoute : ActivatedRoute;
   paginador : any;
+  clienteSeleccionado : Cliente;
 
 }

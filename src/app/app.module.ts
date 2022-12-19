@@ -23,7 +23,7 @@ const routes : Routes = [
   {path:'clientes/form', component:FormComponent},
   {path:'clientes/form/:id', component:FormComponent},
   {path:'clientes/page/:page', component:ClientesComponent}, //RUTA CON PAGE
-  {path:'clientes/ver/:id', component:DetalleComponent},
+  {path:'clientes/ver/:id', component:DetalleComponent},    
 ];
 
 @NgModule({
